@@ -16,14 +16,15 @@ dbConnection();
 // CORS setup
 app.use(cors());
 
+// Read and parse body
+app.use(express.json())
+
 const PORT = process.env.PORT;
 
-app.get('/', (req, res) => {
+// Usuarios
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use("/api/login", require("./routes/auth"));
 
-    res.json({
-        data: 'Ok'
-    })
-})
 
 
 app.listen(3000, () => { 
